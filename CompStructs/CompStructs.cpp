@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include "Set.h"
+#include <list>
 
 using namespace std;
 
@@ -30,58 +31,26 @@ void ArrayTest()
 	}
 }
 
-void SubtractSets(int* a, const int sizeA, int* b, const int sizeB)
+list<int> SubtractSets(list<int> A, list<int> B)
 {
-	int temp[10];
+	list<int> temp = A;
 
-	// Merge Values
-	for (int i = 0; i < sizeA; i++)
-		temp[i] = a[i];
+	for (int numA : temp)
+		for (int numB : B)
+			temp.remove(numB);
 
-	for (int i = 0; i < sizeB; i++)
-		temp[i + sizeA] = b[i];
-
-	// Remove Duplicates
-	for (int i = 0; i < 10; i++)
-	{
-		int testAgainst = *(temp + i);
-		for (int j = 0; i < 10 - 1; i++)
-		{
-			if (temp[j] == testAgainst)
-			{
-				temp[j] = NULL;
-			}
-		}
-	}
-
-	cout << "Temp: ";
-	for (int i = 0; i < 10; i++)
-	{
-		cout << *(temp + i) << " ";
-	}
-	cout << endl;
+	return temp;
 }
 
 int main()
 {
-	int setA[] = { 1, 3, 5, 6, 8 };
-	int setB[] = { 2, 3, 4, 7, 9 };
-
-	int* a = setA;
-	int* b = setB;
-	SubtractSets(a, 5, b, 5);
-
-
-	//Set *A = new Set(setA, *(&setA + 1) - setA);
-	//Set *B = new Set(setB, *(&setB + 1) - setB);
-
-	//Set C = *A - *B;
-	//Add(&x, &y);
-	//ArrayTest();
-
-	//std::cout << "A - B: " << (A - B);
-
-	//SubtractSets(setA, 5, setB, 5);
+	list<int> setA = { 1, 3, 5, 6, 8 };
+	list<int> setB = { 2, 3, 4, 7, 9 };
+	
+	cout << "Subtract: ";
+	for (int num : SubtractSets(setA, setB))
+		cout << num << " ";
+	cout << endl << "---------------------------" << endl;
 
 	int input;
 	std::cin >> input;
