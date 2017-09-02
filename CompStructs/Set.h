@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <list>
+
+using std::list;
 
 /*
 	Section 1.1 1.2
@@ -13,17 +16,15 @@
 class Set
 {
 public:
-	Set(int set[], int size);
+	Set(list<int> input);
 
-	int Length();
-	Set Union (Set& A, Set& B);
-	Set Intersection(Set& A, Set& B);
-	Set operator-(const Set& B);
-	friend std::ostream& operator<<(std::ostream& os, const Set& A);
+	list<int> GetList();
 
+	static Set Union (Set& A, Set& B);
+	static Set Intersection(Set& A, Set& B);
+	Set operator-(Set& B);
+	friend std::ostream& operator<<(std::ostream& os, Set& A);
 
-	int* elements;
 private:
-	int *temp;
-	int length;
+	list<int> set;
 };

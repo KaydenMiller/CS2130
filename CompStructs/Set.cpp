@@ -1,47 +1,62 @@
 #include "stdafx.h"
 #include "Set.h"
 #include <stdlib.h>
+#include <list>
 
-Set::Set(int set[], int size)
+using std::list;
+
+Set::Set(list<int> input)
 {
-	elements = set;
-	length = size;
+	set = input;
 }
 
-int Set::Length()
+list<int> Set::GetList()
 {
-	return length;
+	return set;
 }
 
-Set Set::operator-(const Set& B)
+Set Set::Union(Set& A, Set& B)
 {
-	int size = (this->Length() + B.length);
-	//temp[size] = elements;
-	//temp = elements;
-	
-	for (int elementB = 0; elementB < B.length; elementB++)
+	list<int> temp = A.GetList();
+	temp.merge(B.GetList());
+	temp.unique();
+
+	return Set(temp);
+}
+
+Set Set::Intersection(Set& A, Set& B)
+{
+	list<int> temp;
+	list<int> setA = A.GetList();
+	list<int> setB = B.GetList();
+
+	for (list<int>::iterator itA = setA.begin(); itA != setA.end(); itA++)
 	{
-		bool sameElemFlag = false;
-
-		for (int elementA = 0; elementA < this->length; elementA++)
+		for (list<int>::iterator itB = setB.begin(); itB != setB.end(); itB++)
 		{
-			if (this->elements[elementA] == B.elements[elementB])
-				sameElemFlag = true;
+			if (*itA == *itB)
+				temp.push_back(*itA);
 		}
-
-		if (!sameElemFlag)
-			temp[this->length + elementB + 1] = B.elements[elementB];
 	}
 
-	return Set(temp, *(&temp + 1) - temp);
+	return Set(temp);
+}
+
+Set Set::operator-(Set& B)
+{
+	list<int> temp = this->set;
+
+	for (int numA : temp)
+		for (int numB : B.GetList())
+			temp.remove(numB);
+
+	return Set(temp);
 }
 
 std::ostream& operator<<(std::ostream& os, Set& A)
 {
-	for (int i = 0; i < A.Length(); i++)
-	{
-		os << A.elements[i];
-	}
+	for (int num : A.GetList())
+		os << num << " ";
 
 	return os;
 }
