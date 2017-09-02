@@ -6,32 +6,11 @@
 #include "Set.h"
 #include <list>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::list;
 
-void ArrayTest()
-{
-	// an array with 5 elements.
-	double balance[5] = { 1000.0, 2.0, 3.4, 17.0, 50.0 };
-	double *p;
-
-	p = balance;
-
-	// output each array element's value 
-	cout << "Array values using pointer " << endl;
-	for (int i = 0; i < 5; i++) {
-		cout << "*(p + " << i << ") : ";
-		cout << *(p + i) << endl;
-	}
-
-
-	cout << "Array values using balance as address " << endl;
-	for (int i = 0; i < 5; i++) {
-		cout << "*(balance + " << i << ") : ";
-		cout << *(balance + i) << endl;
-	}
-}
-
-list<int> SubtractSets(list<int> A, list<int> B)
+void SubtractSets(list<int> A, list<int> B)
 {
 	list<int> temp = A;
 
@@ -39,7 +18,41 @@ list<int> SubtractSets(list<int> A, list<int> B)
 		for (int numB : B)
 			temp.remove(numB);
 
-	return temp;
+	cout << "Subtract: ";
+	for (int num : temp)
+		cout << num << " ";
+	cout << endl << "---------------------------" << endl;
+}
+
+void UnionOfSets(list<int> A, list<int> B)
+{
+	list<int> temp = A;		// set temp equal to A
+	temp.merge(B);			// merge B into the temp
+	temp.unique();			// Remove all duplicate values
+
+	cout << "Union: ";
+	for (int num : temp)
+		cout << num << " ";
+	cout << endl << "---------------------------" << endl;
+}
+
+void IntersectionOfSets(list<int> A, list<int> B)
+{
+	list<int> temp;
+
+	for (list<int>::iterator itA = A.begin(); itA != A.end(); itA++)
+	{
+		for (list<int>::iterator itB = B.begin(); itB != B.end(); itB++)
+		{
+			if (*itA == *itB)
+				temp.push_back(*itA);
+		}
+	}
+
+	cout << "Intersection: ";
+	for (int num : temp)
+		cout << num << " ";
+	cout << endl << "---------------------------" << endl;
 }
 
 int main()
@@ -47,10 +60,10 @@ int main()
 	list<int> setA = { 1, 3, 5, 6, 8 };
 	list<int> setB = { 2, 3, 4, 7, 9 };
 	
-	cout << "Subtract: ";
-	for (int num : SubtractSets(setA, setB))
-		cout << num << " ";
-	cout << endl << "---------------------------" << endl;
+	
+	SubtractSets(setA, setB);
+	UnionOfSets(setA, setB);
+	IntersectionOfSets(setA, setB);
 
 	int input;
 	std::cin >> input;
