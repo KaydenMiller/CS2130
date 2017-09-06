@@ -9,6 +9,7 @@
 using std::cout;
 using std::endl;
 using std::list;
+using CompStructs::Set;
 
 void SubtractSets(list<int> A, list<int> B)
 {
@@ -63,6 +64,9 @@ int main()
 	Set A = Set(setA);
 	Set B = Set(setB);
 
+	cout << "Set A: " << A << endl;
+	cout << "Set B: " << B << endl;
+	cout << "---------------------------" << endl;
 	cout << "Subtraction: " << (A - B);
 	cout << endl << "---------------------------" << endl;
 	cout << "Union: " << Set::Union(A, B);
