@@ -42,7 +42,7 @@ namespace Tests
 			}
 		}
 
-		TEST_METHOD(SubtractionOnSets)
+		TEST_METHOD(SubtractionOfSets)
 		{
 			list<int> listA = { 1, 2, 3, 4, 5 };
 			list<int> listB = { 0, 2, 3, 8, 9 };
@@ -50,8 +50,65 @@ namespace Tests
 			Set B = Set(listB);
 
 			list<int> expected = { 1, 4, 5 };
-			//list<int> output = (A - B).GetList();
-			for (int num : expected)
+			list<int> output = (A - B).GetList();
+			for (int num : output)
+			{
+				bool flag = false;
+
+				for (int exp : expected)
+				{
+					if (num == exp)
+					{
+						flag = true;
+						Assert::AreEqual(exp, num);
+						break;
+					}
+				}
+
+				if (!flag)
+					Assert::Fail();
+			}
+		}
+
+		TEST_METHOD(UnionOfSets)
+		{
+			list<int> listA = { 1, 2, 3, 4, 5 };
+			list<int> listB = { 5, 6, 7, 8, 9 };
+			Set A = Set(listA);
+			Set B = Set(listB);
+
+			list<int> expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			list<int> output = Set::Union(A, B).GetList();
+			for (int num : output)
+			{
+				bool flag = false;
+
+				for (int exp : expected)
+				{
+					if (num == exp)
+					{
+						flag = true;
+						Assert::AreEqual(exp, num);
+						break;
+					}
+				}
+
+				if (!flag)
+					Assert::Fail();
+			}
+		}
+
+		TEST_METHOD(IntersectionOfSets)
+		{
+
+			list<int> listA = { 1, 2, 3, 4, 5 };
+			list<int> listB = { 5, 6, 7, 8, 9 };
+			Set A = Set(listA);
+			Set B = Set(listB);
+
+			list<int> expected = { 5 };
+			list<int> output = Set::Intersection(A, B).GetList();
+			for (int num : output)
 			{
 				bool flag = false;
 
