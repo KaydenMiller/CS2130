@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
 #include <list>
+#include <string>
 
 using std::list;
+using std::string;
 
 namespace CompStructs
 {
@@ -22,9 +24,11 @@ namespace CompStructs
 		Set(list<int> input);
 
 		list<int> GetList();
+		string ToString();
 
 		static Set Union(Set& A, Set& B);
 		static Set Intersection(Set& A, Set& B);
+
 		Set operator-(Set& B);
 		friend std::ostream& operator<<(std::ostream& os, Set& A);
 

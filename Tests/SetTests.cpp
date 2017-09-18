@@ -126,5 +126,13 @@ namespace Tests
 					Assert::Fail();
 			}
 		}
+
+		TEST_METHOD(SetToString)
+		{
+			list<int> listA = { 1, 2, 3, 4, 5 };
+			Set A = Set(listA);
+			std::string expected = "{ 1, 2, 3, 4, 5 }";
+			Assert::AreEqual(expected, A.ToString());
+		}
 	};
 }

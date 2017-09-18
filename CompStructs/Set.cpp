@@ -2,8 +2,10 @@
 #include "Set.h"
 #include <stdlib.h>
 #include <list>
+#include <string>
 
 using std::list;
+using std::string;
 
 namespace CompStructs
 {
@@ -44,6 +46,25 @@ namespace CompStructs
 		return Set(temp);
 	}
 
+	string Set::ToString()
+	{
+		list<int> setA = this->GetList();
+		list<int>::iterator end = setA.end();
+		end--;
+		string output;
+
+		output.append("{ ");
+		for (list<int>::iterator it = setA.begin(); it != setA.end(); it++)
+		{
+			if (it == end)
+				output.append(std::to_string(*it) + " }");
+			else
+				output.append(std::to_string(*it) + ", ");
+		}
+
+		return output;
+	}
+
 	Set Set::operator-(Set& B)
 	{
 		list<int> temp = this->set;
@@ -57,9 +78,26 @@ namespace CompStructs
 
 	std::ostream& operator<<(std::ostream& os, Set& A)
 	{
-		for (int num : A.GetList())
-			os << num << " ";
+		string output = A.ToString();
+		os << output;
+		return os;
+
+		/*
+		list<int> setA = A.GetList();
+		list<int>::iterator end = setA.end();
+		end--;
+
+		os << "{ ";
+		for (list<int>::iterator it = setA.begin(); it != setA.end(); it++)
+		{
+			if (it == end)
+				os << *it << " }";
+			else
+				os << *it << ", ";
+		}
 
 		return os;
+		*/
+		
 	}
 }
