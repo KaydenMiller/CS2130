@@ -32,5 +32,11 @@
     <ClCompile Include="..\CompStructs\Set.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Hasher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HasherTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
