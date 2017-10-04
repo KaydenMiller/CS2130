@@ -21,6 +21,7 @@ using std::exit;
 void AssignmentSelect(int);
 void SetAssignment();
 void HashingAssignment();
+void GenerateSequenceAssignment();
 void Menu();
 
 int main()
@@ -42,13 +43,21 @@ void Menu()
 	cout << "---------------------------" << endl;
 	cout << "1. Sets (Const Values)" << endl;
 	cout << "2. Hashing (string)" << endl;
-	cout << "3. Quit" << endl;
+	cout << "3. Display Sequence" << endl;
+	cout << "4. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; 
 	cin >> selection;
 	cout << "---------------------------" << endl;
-
-	AssignmentSelect(selection);
+	if (cin.good())
+	{
+		AssignmentSelect(selection);
+		cout << endl;
+	}
+	else
+	{
+		cout << "Please enter a valid integer!" << endl;
+	}
 }
 
 void AssignmentSelect(int selection)
@@ -63,6 +72,9 @@ void AssignmentSelect(int selection)
 			BaseConverter::ToBinary(8);
 			break;
 		case 3:
+			GenerateSequenceAssignment();
+			break;
+		case 4:
 			exit(0);
 			break;
 		default:
@@ -94,9 +106,23 @@ void SetAssignment()
 void HashingAssignment()
 {
 	string inputString;
+	cin.ignore();
 
 	cout << "Please Input a sentence to be hashed: ";
 	std::getline(cin, inputString);
 	cout << "Hashed String Value: " << Hasher::HashString(inputString);
 	cout << endl << "---------------------------" << endl;
+}
+
+// generate and display the following sequence A = (11110000  111000  1100  10)
+void GenerateSequenceAssignment()
+{
+	for (int i = 4; i >= 1; i--)
+	{
+		for (int j = i; j > 0; j--)
+			cout << 1;
+
+		for (int j = i; j > 0; j--)
+			cout << 0;
+	}
 }
