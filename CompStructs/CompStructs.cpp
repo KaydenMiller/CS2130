@@ -7,6 +7,7 @@
 #include <list>
 #include "Hasher.h"
 #include <string>
+#include "BaseConverter.h"
 
 using std::cout;
 using std::cin;
@@ -58,7 +59,8 @@ void AssignmentSelect(int selection)
 			SetAssignment();
 			break;
 		case 2:
-			HashingAssignment();
+			//HashingAssignment();
+			BaseConverter::ToBinary(8);
 			break;
 		case 3:
 			exit(0);
