@@ -11,15 +11,18 @@ namespace Tests
 {
 	TEST_CLASS(HashingTests)
 	{
-		TEST_METHOD(HashStringWithMod31)
+		TEST_METHOD(StringsHaveCorrectValues)
 		{
-			string input1 = "I am very hungry";
-			string input2 = "Hello my name is Kayden";
-			string input3 = "This is a test";
+			Assert::AreEqual(0, Hasher::HashString("I am very hungry"));
+			Assert::AreEqual(25, Hasher::HashString("Hello my name is Kayden"));
+			Assert::AreEqual(25, Hasher::HashString("This is a test"));
+			Assert::AreEqual(19, Hasher::HashString("bob"));
+			Assert::AreEqual(19, Hasher::HashString("BOB"));
+		}
 
-			Assert::AreEqual(1, Hasher::HashString(input1));
-			Assert::AreEqual(-21, Hasher::HashString(input2));
-			Assert::AreEqual(-21, Hasher::HashString(input3));
+		TEST_METHOD(UpperAndLowerCaseGiveSameValue)
+		{
+			Assert::AreEqual(Hasher::HashString("BOB"), Hasher::HashString("bob"));
 		}
 	};
 }
