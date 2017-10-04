@@ -8,6 +8,9 @@
 #include "Hasher.h"
 #include <string>
 #include "BaseConverter.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 using std::cout;
 using std::cin;
@@ -16,13 +19,16 @@ using std::list;
 using std::string;
 using CompStructs::Set;
 using CompStructs::Hasher;
+using CompStructs::BaseConverter;
 using std::exit;
 
 void AssignmentSelect(int);
 void SetAssignment();
 void HashingAssignment();
 void GenerateSequenceAssignment();
+void BaseConversionsAssignment();
 void Menu();
+
 
 int main()
 {
@@ -34,30 +40,39 @@ int main()
     return 0;
 }
 
+bool IsNumeric(const std::string& s)
+{
+	string::const_iterator it = s.begin();
+	while (it != s.end() && isdigit(*it)) ++it;
+		return !s.empty() && it == s.end();
+}
+
 void Menu()
 {	
-	int selection;
+	string input;
 
 	cout << "---------------------------" << endl;
 	cout << "Please Enter A Selection:" << endl;
 	cout << "---------------------------" << endl;
-	cout << "1. Sets (Const Values)" << endl;
-	cout << "2. Hashing (string)" << endl;
-	cout << "3. Display Sequence" << endl;
-	cout << "4. Quit" << endl;
+	cout << "1. Sets (Const Values) Assignment 1" << endl;
+	cout << "2. Hashing (string) Assignment 2" << endl;
+	cout << "3. Display Sequence Assignment 3" << endl;
+	cout << "4. Convert Bases Assignment 4" << endl;
+	cout << "5. Quit" << endl;
 	cout << "---------------------------" << endl;
-	cout << "Selection: "; 
-	cin >> selection;
+	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
-	if (cin.good())
+	if (IsNumeric(input))
 	{
-		AssignmentSelect(selection);
+		AssignmentSelect(std::stoi(input));
 		cout << endl;
 	}
 	else
 	{
 		cout << "Please enter a valid integer!" << endl;
 	}
+	system("PAUSE");
+	system("CLS");
 }
 
 void AssignmentSelect(int selection)
@@ -68,13 +83,15 @@ void AssignmentSelect(int selection)
 			SetAssignment();
 			break;
 		case 2:
-			//HashingAssignment();
-			BaseConverter::ToBinary(8);
+			HashingAssignment();
 			break;
 		case 3:
 			GenerateSequenceAssignment();
 			break;
 		case 4:
+			BaseConversionsAssignment();
+			break;
+		case 5:
 			exit(0);
 			break;
 		default:
@@ -125,4 +142,34 @@ void GenerateSequenceAssignment()
 		for (int j = i; j > 0; j--)
 			cout << 0;
 	}
+	cout << endl << "---------------------------" << endl;
 }
+
+void BaseConversionsAssignment()
+{
+	cin.ignore();
+	cout << "Please Enter an INT to convert: ";
+	string input;
+	cin >> input;
+
+	if (IsNumeric(input))
+	{
+		int value = std::stoi(input);
+		if (value >= 0)
+		{
+			cout << "BIN: " << BaseConverter::ToBinary(value) << endl;
+			cout << "OCT: " << BaseConverter::ToOct(value) << endl;
+			cout << "HEX: " << BaseConverter::ToHex(value) << endl;
+		}
+		else
+		{
+			cout << "Please enter non-negative Integer values only!" << endl;
+		}
+	}
+	else
+	{
+		cout << "Please enter non-negative Integer values only!" << endl;
+	}
+	cout << endl << "---------------------------" << endl;
+}
+
