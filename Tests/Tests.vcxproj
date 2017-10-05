@@ -157,6 +157,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\CompStructs\BaseConverter.cpp" />
     <ClCompile Include="..\CompStructs\Set.cpp" />
     <ClCompile Include="Hasher.cpp" />
     <ClCompile Include="HasherTests.cpp" />
