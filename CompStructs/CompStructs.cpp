@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include "TruthTableBuilder.h"
 
 using std::cout;
 using std::cin;
@@ -20,6 +21,7 @@ using std::string;
 using CompStructs::Set;
 using CompStructs::Hasher;
 using CompStructs::BaseConverter;
+using CompStructs::TruthTableBuilder;
 using std::exit;
 
 void AssignmentSelect(int);
@@ -28,6 +30,7 @@ void HashingAssignment();
 void GenerateSequenceAssignment();
 void BaseConversionsAssignment();
 void Menu();
+void CreateTruthTable();
 
 
 int main()
@@ -58,7 +61,8 @@ void Menu()
 	cout << "2. Hashing (string) Assignment 2" << endl;
 	cout << "3. Display Sequence Assignment 3" << endl;
 	cout << "4. Convert Bases Assignment 4" << endl;
-	cout << "5. Quit" << endl;
+	cout << "5. Create Truth Table Assignment 5" << endl;
+	cout << "6. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
@@ -92,6 +96,9 @@ void AssignmentSelect(int selection)
 			BaseConversionsAssignment();
 			break;
 		case 5:
+			CreateTruthTable();
+			break;
+		case 6:
 			exit(0);
 			break;
 		default:
@@ -99,6 +106,13 @@ void AssignmentSelect(int selection)
 			cout << "---------------------------" << endl;
 			break;
 	}
+}
+
+void CreateTruthTable()
+{
+	TruthTableBuilder truthTableBuilder;
+	truthTableBuilder.AskQuestions();
+	truthTableBuilder.OutputTable();
 }
 
 void SetAssignment()

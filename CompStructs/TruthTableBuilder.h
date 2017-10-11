@@ -5,10 +5,12 @@ using std::string;
 
 namespace CompStructs
 {
-	static class TruthTableBuilder
+	// V = or, A = and, ~ = not
+	class TruthTableBuilder
 	{
 	private:
-		string AND_or_OR = "AND";
+		bool AND = false;
+		bool OR = false;
 		bool NOTp = false;
 		bool NOTq = false;
 
@@ -16,7 +18,10 @@ namespace CompStructs
 		void Question2();
 		void Question3();
 		string ToLower(string input);
+		string BuildPropStatement();
+		string GetLogicalEquivalent(unsigned char input);
 	public:
 		void AskQuestions();
+		void OutputTable();
 	};
 }
