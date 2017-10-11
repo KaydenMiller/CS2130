@@ -30,7 +30,7 @@
     <ClInclude Include="Hasher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TruthTableBuilder.h">
+    <ClInclude Include="BaseConverter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClCompile Include="Hasher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TruthTableBuilder.cpp">
+    <ClCompile Include="BaseConverter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
