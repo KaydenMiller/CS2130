@@ -124,6 +124,7 @@ namespace CompStructs
 		const unsigned char q[4] = { T, F, T, F };
 		unsigned char outputArray[4];
 
+		// calculate the output of the prop. statement
 		if (AND)
 		{
 			// AND
@@ -197,8 +198,7 @@ namespace CompStructs
 			}
 		}
 
-		
-
+		// display the output
 		cout << std::setw(1) << std::right << "| p |"
 			 << std::setw(1) << std::right << " q | " 
 			 << std::setw(1) << BuildPropStatement() << " |" << std::endl;
