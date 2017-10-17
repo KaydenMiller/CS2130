@@ -31,6 +31,7 @@ void GenerateSequenceAssignment();
 void BaseConversionsAssignment();
 void Menu();
 void CreateTruthTable();
+void CreateLargeTruthTable();
 
 
 int main()
@@ -62,7 +63,8 @@ void Menu()
 	cout << "3. Display Sequence Assignment 3" << endl;
 	cout << "4. Convert Bases Assignment 4" << endl;
 	cout << "5. Create Truth Table Assignment 5" << endl;
-	cout << "6. Quit" << endl;
+	cout << "6. Create Large Truth Table Assignment 6" << endl;
+	cout << "7. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
@@ -99,6 +101,9 @@ void AssignmentSelect(int selection)
 			CreateTruthTable();
 			break;
 		case 6:
+			CreateLargeTruthTable();
+			break;
+		case 7:
 			exit(0);
 			break;
 		default:
@@ -106,6 +111,12 @@ void AssignmentSelect(int selection)
 			cout << "---------------------------" << endl;
 			break;
 	}
+}
+
+void CreateLargeTruthTable()
+{
+	TruthTableBuilder truthTableBuilder;
+	truthTableBuilder.OutputLargeTable();
 }
 
 void CreateTruthTable()

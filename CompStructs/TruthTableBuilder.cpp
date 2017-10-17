@@ -209,6 +209,51 @@ namespace CompStructs
 		
 	}
 
+	void TruthTableBuilder::OutputLargeTable()
+	{
+		// this is just to make typeing the array easier
+		const bool T = true;
+		const bool F = false;
+		
+		//					 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16
+		const bool a[32] = { T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T,
+							 F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F };
+
+		const bool b[32] = { T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F,
+							 T, T, T, T, T, T, T, T, F, F, F, F, F, F, F, F };
+
+		const bool c[32] = { T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F,
+							 T, T, T, T, F, F, F, F, T, T, T, T, F, F, F, F };
+
+		const bool d[32] = { T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F,
+							 T, T, F, F, T, T, F, F, T, T, F, F, T, T, F, F };
+
+		const bool e[32] = { T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F,
+							 T, F, T, F, T, F, T, F, T, F, T, F, T, F, T, F };
+
+		bool output[32];
+		
+		for (int i = 0; i < 32; i++)
+		{
+			output[i] = (((c[i] || !d[i]) && b[i]) && !(d[i] || a[i] && e[i]));
+		}
+
+		cout << "| a | b | c | d | e | (( c V ~d) A b) A ~( d V a A e) |" << std::endl;
+		cout << "-------------------------------------------------------" << std::endl;
+		for (int i = 0; i < 32; i++)
+		{
+			if (i == 15)
+				cout << "-------------------------------------------------------" << std::endl;
+
+			cout << "| " << GetLogicalEquivalent(a[i]) << " | " << GetLogicalEquivalent(b[i]) << " | "
+				<< GetLogicalEquivalent(c[i]) << " | " << GetLogicalEquivalent(d[i]) << " | "
+				<< GetLogicalEquivalent(e[i]) << " | " << 
+				std::setw(17) << GetLogicalEquivalent(output[i]) << std::setw(17) << " | " << std::endl;
+		}
+		cout << "-------------------------------------------------------" << std::endl;
+
+	}
+
 	string TruthTableBuilder::GetLogicalEquivalent(unsigned char input)
 	{
 		switch (input)
@@ -216,6 +261,17 @@ namespace CompStructs
 			case 0x00:
 				return "F";
 			case 0x01:
+				return "T";
+		}
+	}
+
+	string TruthTableBuilder::GetLogicalEquivalent(bool input)
+	{
+		switch (input)
+		{
+			case false:
+				return "F";
+			case true:
 				return "T";
 		}
 	}

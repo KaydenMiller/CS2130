@@ -20,8 +20,10 @@ namespace CompStructs
 		string ToLower(string input);
 		string BuildPropStatement();
 		string GetLogicalEquivalent(unsigned char input);
+		string GetLogicalEquivalent(bool input);
 	public:
 		void AskQuestions();
 		void OutputTable();
+		void OutputLargeTable();
 	};
 }
