@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "TruthTableBuilder.h"
+#include "StatsMath.h"
 
 using std::cout;
 using std::cin;
@@ -22,6 +23,7 @@ using CompStructs::Set;
 using CompStructs::Hasher;
 using CompStructs::BaseConverter;
 using CompStructs::TruthTableBuilder;
+using CompStructs::StatsMath;
 using std::exit;
 
 void AssignmentSelect(int);
@@ -32,6 +34,7 @@ void BaseConversionsAssignment();
 void Menu();
 void CreateTruthTable();
 void CreateLargeTruthTable();
+void PermutationsAndCombinations();
 
 
 int main()
@@ -64,7 +67,8 @@ void Menu()
 	cout << "4. Convert Bases Assignment 4" << endl;
 	cout << "5. Create Truth Table Assignment 5" << endl;
 	cout << "6. Create Large Truth Table Assignment 6" << endl;
-	cout << "7. Quit" << endl;
+	cout << "7. Permutations and Combinations Assignment 7" << endl;
+	cout << "8. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
@@ -104,12 +108,44 @@ void AssignmentSelect(int selection)
 			CreateLargeTruthTable();
 			break;
 		case 7:
+			PermutationsAndCombinations();
+			break;
+		case 8:
 			exit(0);
 			break;
 		default:
 			cout << "Invalid Responce Try Again!" << endl;
 			cout << "---------------------------" << endl;
 			break;
+	}
+}
+
+void PermutationsAndCombinations()
+{
+	string inputn, inputr;
+	long n, r;
+	cin.ignore();
+
+	cout << "What is the number of n: ";
+	cin >> inputn;
+	cout << "What is the number of r: ";
+	cin >> inputr;
+
+	if (IsNumeric(inputn) && IsNumeric(inputr))
+	{
+		n = std::stol(inputn);
+		r = std::stol(inputr);
+
+		cout << "---------------------------" << endl;
+		
+		cout << "Combination With Repeats: " << StatsMath::Combination(n, r, true) << endl;
+		cout << "Combination without Repeats: " << StatsMath::Combination(n, r, false) << endl;
+		cout << "Permutation With Repeats: " << StatsMath::Permutation(n, r, true) << endl;
+		cout << "Permutation without Repeats: " << StatsMath::Permutation(n, r, false) << endl;
+	}
+	else
+	{
+		cout << "Please input a valid long or int value!" << endl;
 	}
 }
 

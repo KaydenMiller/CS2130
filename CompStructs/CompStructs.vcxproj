@@ -141,6 +141,7 @@
     <ClInclude Include="BaseConverter.h" />
     <ClInclude Include="Hasher.h" />
     <ClInclude Include="Set.h" />
+    <ClInclude Include="StatsMath.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TruthTableBuilder.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="CompStructs.cpp" />
     <ClCompile Include="Hasher.cpp" />
     <ClCompile Include="Set.cpp" />
+    <ClCompile Include="StatsMath.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
