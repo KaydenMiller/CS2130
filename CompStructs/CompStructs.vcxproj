@@ -150,6 +150,7 @@
     <ClCompile Include="BaseConverter.cpp" />
     <ClCompile Include="CompStructs.cpp" />
     <ClCompile Include="Hasher.cpp" />
+    <ClCompile Include="InvalidValueException.h" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="StatsMath.cpp" />
     <ClCompile Include="stdafx.cpp">
