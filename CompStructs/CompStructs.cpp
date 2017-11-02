@@ -13,6 +13,7 @@
 #include <ctype.h>
 #include "TruthTableBuilder.h"
 #include "StatsMath.h"
+#include "MontyHall.h"
 
 using std::cout;
 using std::cin;
@@ -24,6 +25,7 @@ using CompStructs::Hasher;
 using CompStructs::BaseConverter;
 using CompStructs::TruthTableBuilder;
 using CompStructs::StatsMath;
+using CompStructs::MontyHall;
 using std::exit;
 
 void AssignmentSelect(int);
@@ -35,6 +37,7 @@ void Menu();
 void CreateTruthTable();
 void CreateLargeTruthTable();
 void PermutationsAndCombinations();
+void MontyHallProblem();
 
 
 int main()
@@ -68,7 +71,8 @@ void Menu()
 	cout << "5. Create Truth Table Assignment 5" << endl;
 	cout << "6. Create Large Truth Table Assignment 6" << endl;
 	cout << "7. Permutations and Combinations Assignment 7" << endl;
-	cout << "8. Quit" << endl;
+	cout << "8. Monty Hall Problem Assignment 8" << endl;
+	cout << "9. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
@@ -111,6 +115,9 @@ void AssignmentSelect(int selection)
 			PermutationsAndCombinations();
 			break;
 		case 8:
+			MontyHallProblem();
+			break;
+		case 9:
 			exit(0);
 			break;
 		default:
@@ -119,6 +126,12 @@ void AssignmentSelect(int selection)
 			break;
 	}
 }
+
+void MontyHallProblem()
+{
+	MontyHall::OutputTestResults();
+}
+
 
 void PermutationsAndCombinations()
 {
