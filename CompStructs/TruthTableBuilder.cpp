@@ -242,7 +242,7 @@ namespace CompStructs
 		cout << "-------------------------------------------------------" << std::endl;
 		for (int i = 0; i < 32; i++)
 		{
-			if (i == 15)
+			if (i == 16)
 				cout << "-------------------------------------------------------" << std::endl;
 
 			cout << "| " << GetLogicalEquivalent(a[i]) << " | " << GetLogicalEquivalent(b[i]) << " | "

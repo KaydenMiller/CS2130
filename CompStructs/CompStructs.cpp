@@ -136,20 +136,32 @@ void MontyHallProblem()
 void PermutationsAndCombinations()
 {
 	string inputn, inputr;
-	long n, r;
+	unsigned long n, r;
 	cin.ignore();
 
+	cout << "Please fill out the following information with int values <= 10" << endl;
 	cout << "What is the number of n: ";
 	cin >> inputn;
 	cout << "What is the number of r: ";
 	cin >> inputr;
 
+	cout << "---------------------------" << endl;
+
 	if (IsNumeric(inputn) && IsNumeric(inputr))
 	{
-		n = std::stol(inputn);
-		r = std::stol(inputr);
+		n = std::stoul(inputn);
+		r = std::stoul(inputr);
 
-		cout << "---------------------------" << endl;
+		if (n > 10 || r > 10)
+		{
+			cout << "Please input values <= 10 for n and r!" << endl;
+			return;
+		}
+		else if (r > n)
+		{
+			cout << "r must not be greater than n!" << endl;
+			return;
+		}
 		
 		cout << "Combination With Repeats: " << StatsMath::Combination(n, r, true) << endl;
 		cout << "Combination without Repeats: " << StatsMath::Combination(n, r, false) << endl;

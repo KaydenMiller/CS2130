@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "StatsMath.h"
+#include "../CompStructs/StatsMath.h"
 #include <cmath>
 
 namespace CompStructs

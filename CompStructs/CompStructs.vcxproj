@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClInclude Include="BaseConverter.h" />
     <ClInclude Include="Hasher.h" />
-    <ClInclude Include="MontyHall.h" />
     <ClInclude Include="Set.h" />
     <ClInclude Include="StatsMath.h" />
     <ClInclude Include="stdafx.h" />
@@ -151,7 +150,7 @@
     <ClCompile Include="BaseConverter.cpp" />
     <ClCompile Include="CompStructs.cpp" />
     <ClCompile Include="Hasher.cpp" />
-    <ClCompile Include="MontyHall.cpp" />
+    <ClCompile Include="InvalidValueException.h" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="StatsMath.cpp" />
     <ClCompile Include="stdafx.cpp">
