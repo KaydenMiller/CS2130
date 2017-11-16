@@ -158,7 +158,6 @@ void OrderedPairs()
 	domain.push_back(orderedPair[0][0]);
 	range.push_back(orderedPair[0][1]);
 
-	// WTF why does "it" start at 1 for domain and 2 for range... seriously WTF
 	for (int i = 0; i < 5; i++)
 	{
 		bool flag = true;
