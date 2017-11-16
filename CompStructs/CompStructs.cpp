@@ -43,6 +43,7 @@ void CreateLargeTruthTable();
 void PermutationsAndCombinations();
 void MontyHallProblem();
 void MatrixAssignment();
+void OrderedPairs();
 
 
 int main()
@@ -78,7 +79,8 @@ void Menu()
 	cout << "7. Permutations and Combinations Assignment 7" << endl;
 	cout << "8. Monty Hall Problem Assignment 8" << endl;
 	cout << "9. Matrix Assignment 9" << endl;
-	cout << "10. Quit" << endl;
+	cout << "10. Ordered Pairs Assignment 10" << endl;
+	cout << "11. Quit" << endl;
 	cout << "---------------------------" << endl;
 	cout << "Selection: "; cin >> input;
 	cout << "---------------------------" << endl;
@@ -127,6 +129,9 @@ void AssignmentSelect(int selection)
 			MatrixAssignment();
 			break;
 		case 10:
+			OrderedPairs();
+			break;
+		case 11:
 			exit(0);
 			break;
 		default:
@@ -134,6 +139,76 @@ void AssignmentSelect(int selection)
 			cout << "---------------------------" << endl;
 			break;
 	}
+}
+
+void OrderedPairs()
+{
+	int orderedPair[5][2];
+	vector<int> domain;
+	vector<int> range;
+
+	cout << "Please enter 5 Ordered Pairs: " << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Ordered Pair #" << i + 1 << endl;
+		cout << "Value 1: "; cin >> orderedPair[i][0];
+		cout << "Value 2: "; cin >> orderedPair[i][1];
+	}
+
+	domain.push_back(orderedPair[0][0]);
+	range.push_back(orderedPair[0][1]);
+
+	// WTF why does "it" start at 1 for domain and 2 for range... seriously WTF
+	for (int i = 0; i < 5; i++)
+	{
+		bool flag = true;
+
+		for (vector<int>::iterator it = domain.begin(); it != domain.end(); it++)
+			if (*it == orderedPair[i][0])
+				flag = false;
+		if (flag)
+			domain.push_back(orderedPair[i][0]);
+
+		flag = true;
+
+		for (vector<int>::iterator it = range.begin(); it != range.end(); it++)
+			if (*it == orderedPair[i][1])
+				flag = false;
+		if (flag)
+			range.push_back(orderedPair[i][1]);
+	}
+
+	cout << "---------------------------" << endl;
+
+	cout << "Relation: {";
+	for (int i = 0; i < 5; i++)
+	{
+		if (i < 4)
+			cout << "(" << orderedPair[i][0] << ", " << orderedPair[i][1] << "), ";
+		if (i == 4)
+			cout << "(" << orderedPair[i][0] << ", " << orderedPair[i][1] << ")";
+	}
+	cout << "}" << endl;
+
+	cout << "Domain: {";
+	for (vector<int>::iterator it = domain.begin(); it != domain.end(); it++)
+	{
+		if (it != domain.end() - 1)
+			cout << *it << ", ";
+		else
+			cout << *it;
+	}
+	cout << "}" << endl;
+
+	cout << "Range: {";
+	for (vector<int>::iterator it = range.begin(); it != range.end(); it++)
+	{
+		if (it != range.end() - 1)
+			cout << *it << ", ";
+		else
+			cout << *it;
+	}
+	cout << "}" << endl;
 }
 
 void MatrixAssignment()
